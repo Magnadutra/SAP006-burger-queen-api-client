@@ -118,7 +118,6 @@ function Hall() {
     const readyOrders = () => {
         history.push('/pedidos')
     }
-
     const server = () => {
         history.push('/servir')
     }
@@ -180,7 +179,41 @@ function Hall() {
                             </Button>
                         </section>
 
-                    
+
+
+                    <section className="container-order">
+                        <div className="info-table-client">
+                           
+                                <select className="table-select" name="Mesa: " onChange={(e) => setTable(e.target.value)} >
+                                    <option valeu="mesa01">Mesa</option>
+                                    <option valeu="mesa01">01</option>
+                                    <option valeu="mesa02">02</option>
+                                    <option valeu="mesa03">03</option>
+                                    <option valeu="mesa04">04</option>
+                                    <option valeu="mesa05">05</option>
+                                </select>
+
+                                <Input className="input-client"
+                                    placeholder="Cliente" 
+                                    name="client"
+                                    value={client}
+                                    onChange={onChangeClient}
+                                />
+                           
+                        </div>
+                        <div className="box-order-itens">
+                            {order.map((item, index) =>
+                                <div key={index}>
+                                    <CartItem
+                                        divClassName="order-itens"
+                                        productsName={item.name}
+                                        productsPrice={item.price}
+                                        productsFlavor={item.flavor}
+                                        products={item.qtd}
+                                        qtd={item.qtd}
+                                        productsComplement={item.complement}
+                                        removeOnClick={(e) => handleRemove(e, item, index)}
+
                         <section className="container-order">
                             <div className="info-table-client">
                             
@@ -198,7 +231,7 @@ function Hall() {
                                         name="client"
                                         value={client}
                                         onChange={onChangeClient}
-                                    />
+                       />
                             
                             </div>
                             <div className="box-order-itens">
